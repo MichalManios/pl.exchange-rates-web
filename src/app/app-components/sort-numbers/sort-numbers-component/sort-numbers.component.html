@@ -36,4 +36,24 @@
 
   <hr class="section-division">
 
+  <mat-card class="title-card-sort">
+    <div class="title-sort">
+      <div *ngIf="toSort.length > 0; else emptyTable">
+        Twoje liczby do sortowania: [ {{ toSort.toLocaleString() }} ]
+      </div>
+      <ng-template #emptyTable>
+        Twoje liczby do sortowania: [ ]
+      </ng-template>
+    </div>
+  </mat-card>
+
+  <div class="buttons-sorted-numbers">
+    <mat-card class="mat-card-result">
+        Wynik sortowania:
+    </mat-card>
+    <button mat-fab color="primary" aria-label="Button with result sorted numbers" class="button-number"
+            *ngFor="let buttonNumber of buttonsNumbersSorted"> {{ buttonNumber }}
+    </button>
+  </div>
+
 </div>

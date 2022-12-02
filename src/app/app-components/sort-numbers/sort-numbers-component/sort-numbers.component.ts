@@ -13,7 +13,11 @@ export class SortNumbersComponent implements OnInit {
 
   numbersForm!: FormGroup;
 
-  orders = [{orderType: 'ASC', description: 'ROSNĄCO'}, {orderType: 'DESC', description: 'MALEĄCO'}]
+  orders = [{orderType: 'ASC', description: 'ROSNĄCO'}, {orderType: 'DESC', description: 'MALEJĄCO'}]
+
+  toSort: number[] = [];
+
+  buttonsNumbersSorted:Array<string> = [];
 
   private onlyNumbersAndCommaRegExp = /^[-,0-9]+$/;
 
@@ -26,13 +30,14 @@ export class SortNumbersComponent implements OnInit {
   }
 
   sort() {
-    const numbersToSort = {
-      order: this.numbersForm.controls['orderType'].value,
-      numbers: this.getNumbersFromForm(this.numbersForm.controls['numbers'].value)
-    } as NumbersToSort;
+    this.clearButtonsNumberSorted();
 
-    this.sortNumbersService.getSortedNumbers(numbersToSort).subscribe(console.log);
-    this.setForm();
+    this.sortNumbersService.getSortedNumbers(this.getNumbersToSort(this.numbersForm))
+      .subscribe(({ numbers }) => this.prepareDataToDisplayResult(numbers));
+  }
+
+  public addButtonNumbersSorted(numberSorted: number): void {
+    this.buttonsNumbersSorted = [...this.buttonsNumbersSorted, `${numberSorted}`];
   }
 
   private setForm(): void {
@@ -43,6 +48,23 @@ export class SortNumbersComponent implements OnInit {
   }
 
   private getNumbersFromForm(numbers: string): number[] {
-    return numbers.split(',').map(element => Number(element));
+    return numbers ? numbers.split(',').map(element => Number(element)) : [];
+  }
+
+  private getNumbersToSort(numbersForm: FormGroup): NumbersToSort {
+    return {
+      order: numbersForm.controls['orderType'].value,
+      numbers: this.getNumbersFromForm(numbersForm.controls['numbers'].value)
+    } as NumbersToSort;
+  }
+
+  private clearButtonsNumberSorted(): void {
+    this.buttonsNumbersSorted = [];
+  }
+
+  private prepareDataToDisplayResult(numbers: number[]): void {
+    this.toSort = [...numbers];
+    numbers.forEach(number => this.addButtonNumbersSorted(number));
+    this.setForm();
   }
 }
