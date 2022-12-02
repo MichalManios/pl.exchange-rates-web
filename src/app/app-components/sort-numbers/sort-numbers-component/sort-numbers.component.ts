@@ -29,7 +29,7 @@ export class SortNumbersComponent implements OnInit {
     this.setForm();
   }
 
-  sort() {
+  sort(): void {
     this.clearButtonsNumberSorted();
 
     this.sortNumbersService.getSortedNumbers(this.getNumbersToSort(this.numbersForm))
@@ -67,4 +67,5 @@ export class SortNumbersComponent implements OnInit {
     numbers.forEach(number => this.addButtonNumbersSorted(number));
     this.setForm();
   }
+
 }

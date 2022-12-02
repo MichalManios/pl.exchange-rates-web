@@ -1,6 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SortNumbersComponent } from './sort-numbers.component';
+import { SortNumbersService } from '../sort-numbers.service';
+import { FormBuilder } from '@angular/forms';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('SortNumbersComponent', () => {
   let component: SortNumbersComponent;
@@ -8,7 +11,9 @@ describe('SortNumbersComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SortNumbersComponent ]
+      imports: [ HttpClientTestingModule ],
+      declarations: [ SortNumbersComponent ],
+      providers: [ SortNumbersService, FormBuilder ]
     })
     .compileComponents();
   });
@@ -22,4 +27,5 @@ describe('SortNumbersComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
 });

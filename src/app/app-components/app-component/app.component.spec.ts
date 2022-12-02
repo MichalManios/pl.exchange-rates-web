@@ -20,16 +20,17 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'sorting-numbers'`, () => {
+  it(`should have as title 'Sortowanie liczb'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('sorting-numbers');
+    expect(app.title).toEqual('Sortowanie liczb');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('sorting-numbers app is running!');
+    expect(compiled.querySelector('.toolbar span')?.textContent).toContain('SORTOWANIE LICZB');
   });
+
 });

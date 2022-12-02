@@ -1,4 +1,4 @@
-import {OrderType} from "./order-type.interface";
+import { OrderType } from './order-type.interface';
 
 export interface NumbersToSort {
 
