@@ -52,9 +52,11 @@ export class SortNumbersComponent implements OnInit {
   }
 
   private getNumbersToSort(numbersForm: FormGroup): NumbersToSort {
+    this.toSort = this.getNumbersFromForm(numbersForm.controls['numbers'].value);
+
     return {
       order: numbersForm.controls['orderType'].value,
-      numbers: this.getNumbersFromForm(numbersForm.controls['numbers'].value)
+      numbers: this.toSort
     } as NumbersToSort;
   }
 
@@ -63,7 +65,6 @@ export class SortNumbersComponent implements OnInit {
   }
 
   private prepareDataToDisplayResult(numbers: number[]): void {
-    this.toSort = [...numbers];
     numbers.forEach(number => this.addButtonNumbersSorted(number));
     this.setForm();
   }
