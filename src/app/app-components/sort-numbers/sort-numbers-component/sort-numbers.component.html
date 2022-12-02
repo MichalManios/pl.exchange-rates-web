@@ -1,0 +1,39 @@
+<div class="container">
+
+  <mat-card class="title-card-sort">
+    <div class="title-sort">
+      Wprowadź liczby do posortowania:
+    </div>
+  </mat-card>
+
+  <div mat-dialog-content>
+
+    <form class="sort-numbers-form" [formGroup]="numbersForm" (submit)="numbersForm.valid && sort()">
+      <mat-form-field appearance="fill" class="to-sort-input">
+        <mat-label>Twoje liczby: (oddziel je przecinkami)</mat-label>
+        <input matInput formControlName="numbers">
+        <mat-error *ngIf="numbersForm.get('numbers')?.hasError('pattern')
+                          || numbersForm.get('numbers')?.hasError('forbiddenName')">
+          Niedozwolone znaki! Tylko liczby oddzielone przecinkiem są dozwolone.
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Jak je posortować?</mat-label>
+        <mat-select panelClass="size-panel-sections" formControlName="orderType">
+          <mat-option *ngFor="let order of orders" [value]="order.orderType">
+            {{ order.description }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <div mat-dialog-actions>
+        <button class="button-sort" mat-button>SORTUJ!</button>
+      </div>
+    </form>
+
+  </div>
+
+  <hr class="section-division">
+
+</div>

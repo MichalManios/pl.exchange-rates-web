@@ -1,0 +1,56 @@
+.container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-items: center;
+}
+
+.title-card-sort {
+  align-self: center;
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+  background: #e6e6e6;
+  display: flex;
+  align-items: center;
+  width: 70vw;
+  height: 5em;
+  -webkit-box-shadow: 8px 8px 24px 0px rgba(66, 68, 90, 1);
+  -moz-box-shadow: 8px 8px 24px 0px rgba(66, 68, 90, 1);
+  box-shadow: 8px 8px 24px 0px rgba(66, 68, 90, 1);
+}
+
+.title-sort {
+  display: flex;
+  align-items: center;
+  height: 2.25em;
+  font-size: 2em;
+  cursor: default;
+}
+
+.mat-dialog-content {
+  align-self: center;
+}
+
+.sort-numbers-form {
+  width: 100%;
+  font-size: 1em;
+}
+
+.to-sort-input {
+  width: 50vw;
+  margin-right: 1em;
+}
+
+.section-division {
+  height: 0.3em;
+  width: 100%;
+  background-color: #3f51b5;
+}
+
+.button-sort {
+  font-size: 1em;
+  left: 50%;
+  background: #3f51b5;
+  color: white;
+}
